@@ -1,57 +1,48 @@
 1.
-Preparación del Repositorio GitHub 
-El objetivo de esta fase es establecer el código base y los archivos de configuración necesarios para que Render pueda construir y ejecutar la aplicación.
+Preparacion del Repositorio en GitHub
+En esta parte se prepara todo lo necesario para que Render pueda construir y ejecutar Odoo correctamente.
 
-Clonación y Origen del Código: Se comienza por asegurar una copia del código fuente de Odoo. Esto puede ser un fork del repositorio oficial o una plantilla, que se convierte en el repositorio de origen a ser conectado con Render.
+Clonacion y origen del codigo:
+Primero hay que tener una copia del codigo fuente de Odoo, ya sea un fork del repositorio oficial o una plantilla. Ese repositorio sera el que luego se conecte con Render.
 
-Archivos de Configuración Esenciales:
+Archivos importantes:
 
-requirements.txt: Define las dependencias de Python necesarias.
+requirements.txt: lista las dependencias de Python que necesita Odoo.
 
-Odoo.conf o odoo.cfg: Contiene los parámetros de configuración internos de Odoo (puerto, rutas de addons, etc.).
+odoo.conf: guarda la configuracion interna (puerto, rutas de addons, etc.).
 
-Dockerfile (si se usa un Deployment basado en Contenedores): Especifica las instrucciones de construcción para la imagen Docker de Odoo.
-
-Archivos de Rendimiento/Adicionales: Pueden incluir configuraciones para workers y librerías adicionales (como wkhtmltopdf para reportes).
+Dockerfile: indica como se debe construir la imagen Docker de Odoo.
+Tambien se pueden incluir otros archivos para mejorar el rendimiento o anadir librerias como wkhtmltopdf para los reportes.
 
 2.
-Configuración de Servicios en Render
-Esta fase se centra en la definición de los recursos de infraestructura requeridos para que Odoo funcione correctamente. Odoo típicamente requiere una base de datos y un servicio web para la aplicación.
+Configuracion de Servicios en Render
+Aqui se definen los recursos necesarios para que Odoo funcione: una base de datos y el servicio web.
 
-A. Servicio de Base de Datos (PostgreSQL)
-Tipo de Servicio: Se crea un servicio de Base de Datos Administrada (Managed Database), seleccionando PostgreSQL.
-Función Principal: Proporcionar la persistencia de datos (esquema, registros, etc.) para la aplicación Odoo.
-Conceptos Clave:
-Variables de Entorno: Render expone las credenciales de la base de datos (Host, Usuario, Contraseña, Nombre de BD) como variables de entorno secretas, esenciales para la conexión del servicio web de Odoo.
+A. Servicio de Base de Datos (PostgreSQL):
+Se crea un servicio de base de datos administrada (Managed Database) usando PostgreSQL.
+Su funcion es guardar toda la informacion de Odoo (esquemas, registros, etc.).
+Render genera automaticamente las credenciales (host, usuario, contrasena y nombre de la base de datos) y las guarda como variables de entorno para que Odoo pueda conectarse sin problemas.
 
-B. Servicio Web de Odoo (Web Service)
-Conexión con GitHub: El servicio se vincula directamente al repositorio de Odoo preparado en la Fase I. Render monitoreará la rama principal para despliegues automáticos.
+B. Servicio Web de Odoo:
+Se conecta directamente con el repositorio de GitHub preparado antes. Render supervisa la rama principal para hacer despliegues automaticos.
 
-Configuración del Despliegue:
+Configuracion del despliegue:
 
-Entorno: Se especifica el entorno de ejecución (típicamente Python o Docker si se usa Dockerfile).
+Entorno: normalmente Python o Docker (si se usa un Dockerfile).
 
-Comandos de Construcción (Build Command): Instrucciones para preparar el entorno antes de la ejecución (ej. pip install -r requirements.txt).
+Build Command: prepara el entorno antes de ejecutar Odoo (por ejemplo, pip install -r requirements.txt).
 
-Comando de Inicio (Start Command): Instrucción final que lanza la aplicación Odoo, haciendo referencia al archivo de configuración y al puerto de escucha (ej. odoo-bin -c odoo.conf).
+Start Command: inicia Odoo (por ejemplo, odoo-bin -c odoo.conf).
 
-Variables de Entorno (Environment Variables):
+Variables de entorno:
 
-Inyección de Credenciales: Las credenciales de la BD de PostgreSQL se inyectan en el servicio web. Odoo las utiliza para establecer la conexión a la base de datos.
+Se anaden las credenciales de PostgreSQL para la conexion.
 
-Parámetros de Odoo: Se establecen parámetros de seguridad (ej. MASTER_PASSWORD) y optimización.
-
+Tambien se pueden establecer parametros de seguridad como MASTER_PASSWORD y opciones de optimizacion.
 
 3.
 Ejecucion:
-Ciclo de Despliegue: Render inicia el proceso de construcción (build) (ejecutando el Build Command) y, si tiene éxito, lanza el servicio (run) (ejecutando el Start Command).
-
-Conexión Exitosa: La clave del éxito es la conexión sin fallos entre la instancia de Odoo (Web Service) y la base de datos PostgreSQL.
-
-Acceso y Configuración Inicial: Una vez desplegado, se accede a la URL proporcionada por Render para completar la configuración inicial de Odoo (creación de la primera base de datos y usuario administrador).
-
-
-
-
-
+Render empieza el ciclo de despliegue, ejecutando primero el Build Command y luego el Start Command si todo sale bien.
+El punto clave es que la conexion entre Odoo y PostgreSQL funcione correctamente.
+Por ultimo, se accede a la URL que Render proporciona para completar la configuracion inicial de Odoo, creando la primera base de datos y el usuario administrador.
 

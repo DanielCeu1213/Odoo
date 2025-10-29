@@ -1,4 +1,5 @@
-1.Preparación del Repositorio GitHub 
+1.
+Preparación del Repositorio GitHub 
 El objetivo de esta fase es establecer el código base y los archivos de configuración necesarios para que Render pueda construir y ejecutar la aplicación.
 
 Clonación y Origen del Código: Se comienza por asegurar una copia del código fuente de Odoo. Esto puede ser un fork del repositorio oficial o una plantilla, que se convierte en el repositorio de origen a ser conectado con Render.
@@ -13,7 +14,8 @@ Dockerfile (si se usa un Deployment basado en Contenedores): Especifica las inst
 
 Archivos de Rendimiento/Adicionales: Pueden incluir configuraciones para workers y librerías adicionales (como wkhtmltopdf para reportes).
 
-2. Configuración de Servicios en Render
+2.
+Configuración de Servicios en Render
 Esta fase se centra en la definición de los recursos de infraestructura requeridos para que Odoo funcione correctamente. Odoo típicamente requiere una base de datos y un servicio web para la aplicación.
 
 A. Servicio de Base de Datos (PostgreSQL)
@@ -40,12 +42,14 @@ Inyección de Credenciales: Las credenciales de la BD de PostgreSQL se inyectan 
 Parámetros de Odoo: Se establecen parámetros de seguridad (ej. MASTER_PASSWORD) y optimización.
 
 
-3.Ejecucion:
+3.
+Ejecucion:
 Ciclo de Despliegue: Render inicia el proceso de construcción (build) (ejecutando el Build Command) y, si tiene éxito, lanza el servicio (run) (ejecutando el Start Command).
 
 Conexión Exitosa: La clave del éxito es la conexión sin fallos entre la instancia de Odoo (Web Service) y la base de datos PostgreSQL.
 
 Acceso y Configuración Inicial: Una vez desplegado, se accede a la URL proporcionada por Render para completar la configuración inicial de Odoo (creación de la primera base de datos y usuario administrador).
+
 
 
 

@@ -13,17 +13,13 @@ Dockerfile (si se usa un Deployment basado en Contenedores): Especifica las inst
 
 Archivos de Rendimiento/Adicionales: Pueden incluir configuraciones para workers y librerías adicionales (como wkhtmltopdf para reportes).
 
-
 2. Configuración de Servicios en Render
 Esta fase se centra en la definición de los recursos de infraestructura requeridos para que Odoo funcione correctamente. Odoo típicamente requiere una base de datos y un servicio web para la aplicación.
 
 A. Servicio de Base de Datos (PostgreSQL)
 Tipo de Servicio: Se crea un servicio de Base de Datos Administrada (Managed Database), seleccionando PostgreSQL.
-
 Función Principal: Proporcionar la persistencia de datos (esquema, registros, etc.) para la aplicación Odoo.
-
 Conceptos Clave:
-
 Variables de Entorno: Render expone las credenciales de la base de datos (Host, Usuario, Contraseña, Nombre de BD) como variables de entorno secretas, esenciales para la conexión del servicio web de Odoo.
 
 B. Servicio Web de Odoo (Web Service)
@@ -50,6 +46,7 @@ Ciclo de Despliegue: Render inicia el proceso de construcción (build) (ejecutan
 Conexión Exitosa: La clave del éxito es la conexión sin fallos entre la instancia de Odoo (Web Service) y la base de datos PostgreSQL.
 
 Acceso y Configuración Inicial: Una vez desplegado, se accede a la URL proporcionada por Render para completar la configuración inicial de Odoo (creación de la primera base de datos y usuario administrador).
+
 
 
 

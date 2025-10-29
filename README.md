@@ -42,9 +42,11 @@ Inyección de Credenciales: Las credenciales de la BD de PostgreSQL se inyectan 
 
 Parámetros de Odoo: Se establecen parámetros de seguridad (ej. MASTER_PASSWORD) y optimización.
 
+
 3.Ejecucion:
 Ciclo de Despliegue: Render inicia el proceso de construcción (build) (ejecutando el Build Command) y, si tiene éxito, lanza el servicio (run) (ejecutando el Start Command).
 
 Conexión Exitosa: La clave del éxito es la conexión sin fallos entre la instancia de Odoo (Web Service) y la base de datos PostgreSQL.
 
 Acceso y Configuración Inicial: Una vez desplegado, se accede a la URL proporcionada por Render para completar la configuración inicial de Odoo (creación de la primera base de datos y usuario administrador).
+

@@ -12,8 +12,9 @@ Odoo.conf o odoo.cfg: Contiene los parámetros de configuración internos de Odo
 Dockerfile (si se usa un Deployment basado en Contenedores): Especifica las instrucciones de construcción para la imagen Docker de Odoo.
 
 Archivos de Rendimiento/Adicionales: Pueden incluir configuraciones para workers y librerías adicionales (como wkhtmltopdf para reportes).
-2. Configuración de Servicios en Render
 
+
+2. Configuración de Servicios en Render
 Esta fase se centra en la definición de los recursos de infraestructura requeridos para que Odoo funcione correctamente. Odoo típicamente requiere una base de datos y un servicio web para la aplicación.
 
 A. Servicio de Base de Datos (PostgreSQL)
@@ -49,6 +50,7 @@ Ciclo de Despliegue: Render inicia el proceso de construcción (build) (ejecutan
 Conexión Exitosa: La clave del éxito es la conexión sin fallos entre la instancia de Odoo (Web Service) y la base de datos PostgreSQL.
 
 Acceso y Configuración Inicial: Una vez desplegado, se accede a la URL proporcionada por Render para completar la configuración inicial de Odoo (creación de la primera base de datos y usuario administrador).
+
 
 
 

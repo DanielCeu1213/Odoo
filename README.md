@@ -12,7 +12,7 @@ requirements.txt: lista las dependencias de Python que necesita Odoo.
 odoo.conf: guarda la configuracion interna (puerto, rutas de addons, etc.).
 
 Dockerfile: indica como se debe construir la imagen Docker de Odoo.
-Tambien se pueden incluir otros archivos para mejorar el rendimiento o anadir librerias como wkhtmltopdf para los reportes.
+Tambien se pueden incluir otros archivos para mejorar el rendimiento o añadir librerias como html o pdf para los reportes.
 
 2.
 Configuracion de Servicios en Render
@@ -21,7 +21,7 @@ Aqui se definen los recursos necesarios para que Odoo funcione: una base de dato
 A. Servicio de Base de Datos (PostgreSQL):
 Se crea un servicio de base de datos administrada (Managed Database) usando PostgreSQL.
 Su funcion es guardar toda la informacion de Odoo (esquemas, registros, etc.).
-Render genera automaticamente las credenciales (host, usuario, contrasena y nombre de la base de datos) y las guarda como variables de entorno para que Odoo pueda conectarse sin problemas.
+Render genera automaticamente las credenciales (host, usuario, contraseña y nombre de la base de datos) y las guarda como variables de entorno para que Odoo pueda conectarse sin problemas.
 
 B. Servicio Web de Odoo:
 Se conecta directamente con el repositorio de GitHub preparado antes. Render supervisa la rama principal para hacer despliegues automaticos.
@@ -45,4 +45,5 @@ Ejecucion:
 Render empieza el ciclo de despliegue, ejecutando primero el Build Command y luego el Start Command si todo sale bien.
 El punto clave es que la conexion entre Odoo y PostgreSQL funcione correctamente.
 Por ultimo, se accede a la URL que Render proporciona para completar la configuracion inicial de Odoo, creando la primera base de datos y el usuario administrador.
+
 
